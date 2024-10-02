@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience Matrix</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
+    <style>
+        .experience-item {
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .experience-item:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold mb-6 text-center">Experience Matrix</h1>
+        <div class="grid grid-cols-2 gap-4">
+            <div class="bg-green-200 p-4 rounded">
+                <h2 class="font-bold mb-2">Low Cost, High Improvement</h2>
+                <ul id="lowCostHighImprovement" class="space-y-2"></ul>
+            </div>
+            <div class="bg-blue-200 p-4 rounded">
+                <h2 class="font-bold mb-2">High Cost, High Improvement</h2>
+                <ul id="highCostHighImprovement" class="space-y-2"></ul>
+            </div>
+            <div class="bg-yellow-200 p-4 rounded">
+                <h2 class="font-bold mb-2">Low Cost, Low Improvement</h2>
+                <ul id="lowCostLowImprovement" class="space-y-2"></ul>
+            </div>
+            <div class="bg-red-200 p-4 rounded">
+                <h2 class="font-bold mb-2">High Cost, Low Improvement</h2>
+                <ul id="highCostLowImprovement" class="space-y-2"></ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const experiences = [
+            { name: "Reading books", cost: "low", improvement: "high" },
+            { name: "Learning a new language", cost: "low", improvement: "high" },
+            { name: "Buying expensive gadgets", cost: "high", improvement: "low" },
+            { name: "Traveling abroad", cost: "high", improvement: "high" },
+            { name: "Meditation", cost: "low", improvement: "high" },
+            { name: "Luxury car purchase", cost: "high", improvement: "low" },
+            { name: "Online courses", cost: "low", improvement: "high" },
+            { name: "Gym membership", cost: "low", improvement: "high" },
+        ];
+
+        function addExperience(experience) {
+            const category = `${experience.cost}Cost${experience.improvement}Improvement`;
+            const list = document.getElementById(category);
+            const item = document.createElement("li");
+            item.textContent = experience.name;
+            item.className = "experience-item bg-white p-2 rounded shadow";
+            list.appendChild(item);
+        }
+
+        experiences.forEach(addExperience);
+    </script>
+</body>
+</html>
